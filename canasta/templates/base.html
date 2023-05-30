@@ -15,15 +15,15 @@
         <ul>
             <li><a href="/">Precio Promedio Anual</a></li>
             {% if user.is_authenticated %}
-            <li><a href="/signout">Logout</a></li>
+            <li><a href="{% url 'signout' %}">Logout</a></li>
             {% else %}
-            <li><a href="/signup">Signup</a></li>
+            <li><a href="{% url 'signup' %}">Signup</a></li>
+            <li><a href="{% url 'signin' %}">Signin</a></li>
             {% endif %}
         </ul>
     </aside>
 
     {% block content %}
-
     {% endblock %}
 
 </body>
