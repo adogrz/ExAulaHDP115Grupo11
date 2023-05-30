@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from canasta import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", views.precio_anual, name="precio_anual"),
+    path("signup/", views.signup, name="signup"),
 ]
