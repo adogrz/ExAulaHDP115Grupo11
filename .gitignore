@@ -1,6 +1,8 @@
 venv/
 .idea/
 .vscode/
-db.sqlite3
+*.pyc
+*.sqlite3
+.env
 __pycache__/
 InflacionCanastaBasica/__pycache__/

@@ -2,5 +2,20 @@
 
 {% block content %}
 <h1>Precio Anual</h1>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa hic quae blanditiis voluptatem ex voluptatum! Hic temporibus incidunt aut omnis porro cupiditate veritatis dolorem animi! Necessitatibus soluta repellat quas harum!</p>
+
+<table border="1" align="left">
+    <tr align="center">
+        <th>Año</th>
+        <th>Precio promedio</th>
+        <th>Inflacion</th>
+    </tr>
+    {% for canasta_basica in canastas_basicas_anuales %}
+    <tr align="center">
+        <td><a href="{% url 'mensual' canasta_basica.id %}">{{ canasta_basica.anio }}</a></td>
+        <td>{{ canasta_basica.precio_promedio }}</td>
+        <td>{{ canasta_basica.inflacion }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}
