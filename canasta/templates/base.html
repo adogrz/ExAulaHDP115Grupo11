@@ -10,26 +10,26 @@
 
 <body>
 
-    <!-- Este sera el menu lateral izquierdo -->
-    <aside>
-        <ul>
-            <li><a href="{% url 'precio_anual' %}">Precio Promedio Anual</a></li>
-            <li><a href="{% url 'mensual' 1 %}">2019</a></li>
-            <li><a href="{% url 'mensual' 2 %}">2020</a></li>
-            <li><a href="{% url 'mensual' 3 %}">2021</a></li>
-            <li><a href="{% url 'mensual' 4 %}">2022</a></li>
-            <li><a href="{% url 'mensual' 5 %}">2023</a></li>
-            {% if user.is_authenticated %}
+<!-- Este sera el menu lateral izquierdo -->
+<aside>
+    <ul>
+        <li><a href="{% url 'precio_anual' %}">Precio Promedio Anual</a></li>
+        <li><a href="{% url 'mensual' 1 %}">2019</a></li>
+        <li><a href="{% url 'mensual' 2 %}">2020</a></li>
+        <li><a href="{% url 'mensual' 3 %}">2021</a></li>
+        <li><a href="{% url 'mensual' 4 %}">2022</a></li>
+        <li><a href="{% url 'mensual' 5 %}">2023</a></li>
+        {% if user.is_authenticated %}
             <li><a href="{% url 'signout' %}">Logout</a></li>
-            {% else %}
+        {% else %}
             <li><a href="{% url 'signup' %}">Signup</a></li>
             <li><a href="{% url 'signin' %}">Signin</a></li>
-            {% endif %}
-        </ul>
-    </aside>
+        {% endif %}
+    </ul>
+</aside>
 
-    {% block content %}
-    {% endblock %}
+{% block content %}
+{% endblock %}
 
 </body>
 

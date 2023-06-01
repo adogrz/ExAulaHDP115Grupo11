@@ -5,6 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .models import CanastaBasicaAnual, CanastaBasicaMensual
 
+
 # Create your views here.
 
 
@@ -17,16 +18,18 @@ def obtener_lista_canasta_basica(request):
 
 
 def obtener_canasta_basica(request, canasta_basica_anual_id):
-    canasta_basica_anual = get_object_or_404(
-        CanastaBasicaAnual, pk=canasta_basica_anual_id)
+    canasta_basica_anual = get_object_or_404(CanastaBasicaAnual,
+                                             pk=canasta_basica_anual_id)
     canastas_basicas_mensuales = CanastaBasicaMensual.objects.filter(
         anual_id=canasta_basica_anual_id)
 
     if not canastas_basicas_mensuales:
-        return get_object_or_404(CanastaBasicaMensual, anual_id=canasta_basica_anual_id)
+        return get_object_or_404(CanastaBasicaMensual,
+                                 anual_id=canasta_basica_anual_id)
 
     meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-             'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+             'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
+             'Diciembre']
 
     return render(request, 'mensual.html', {
         'canasta_basica_anual': canasta_basica_anual,
@@ -36,24 +39,27 @@ def obtener_canasta_basica(request, canasta_basica_anual_id):
 
 
 def signup(request):
+    template_name = 'signup.html'
+
     if request.method == 'GET':
-        return render(request, 'signup.html', {
+        return render(request, template_name, {
             'form': UserCreationForm
         })
     else:
         if request.POST['password1'] == request.POST['password2']:
             try:
                 user = User.objects.create_user(
-                    username=request.POST['username'], password=request.POST['password1'])
+                    username=request.POST['username'],
+                    password=request.POST['password1'])
                 user.save()
                 login(request, user)
                 return redirect('precio_anual')
             except IntegrityError:
-                return render(request, 'signup.html', {
+                return render(request, template_name, {
                     'form': UserCreationForm,
                     'error': 'Username already exists'
                 })
-        return render(request, 'signup.html', {
+        return render(request, template_name, {
             'form': UserCreationForm,
             'error': 'Passwords do not match'
         })
@@ -71,7 +77,8 @@ def signin(request):
         })
     else:
         user = authenticate(
-            request, username=request.POST['username'], password=request.POST['password'])
+            request, username=request.POST['username'],
+            password=request.POST['password'])
         if user is None:
             return render(request, 'signin.html', {
                 'form': AuthenticationForm,

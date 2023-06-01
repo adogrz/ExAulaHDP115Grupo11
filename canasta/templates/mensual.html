@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Canasta Básica Mensual</h1>
-<table border="1" align="left">
-    <thead>
-        <tr align="center">
+    <h1>Canasta Básica Mensual</h1>
+    <table>
+        <thead>
+        <tr>
             <th>Año</th>
             {% for mes in meses %}
                 <th>{{ mes }}</th>
@@ -12,10 +12,10 @@
             <th>Promedio anual</th>
             <th>Inflación</th>
         </tr>
-    </thead>
-    
-    <tbody>
-        <tr align="center">
+        </thead>
+
+        <tbody>
+        <tr>
             <td>{{ canasta_basica_anual.anio }}</td>
             {% for canasta_basica_mensual in canastas_basicas_mensuales %}
                 <td>{{ canasta_basica_mensual.precio }}</td>
@@ -23,6 +23,6 @@
             <td>{{ canasta_basica_anual.precio_promedio }}</td>
             <td>{{ canasta_basica_anual.inflacion }}</td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 {% endblock %}

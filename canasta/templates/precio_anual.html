@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Precio Anual</h1>
+    <h1>Precio Anual</h1>
 
-<table border="1" align="left">
-    <tr align="center">
-        <th>Año</th>
-        <th>Precio promedio</th>
-        <th>Inflacion</th>
-    </tr>
-    {% for canasta_basica in canastas_basicas_anuales %}
-    <tr align="center">
-        <td><a href="{% url 'mensual' canasta_basica.id %}">{{ canasta_basica.anio }}</a></td>
-        <td>{{ canasta_basica.precio_promedio }}</td>
-        <td>{{ canasta_basica.inflacion }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <table>
+        <tr>
+            <th>Año</th>
+            <th>Precio promedio</th>
+            <th>Inflación</th>
+        </tr>
+        {% for canasta_basica in canastas_basicas_anuales %}
+            <tr>
+                <td>
+                    <a href="{% url 'mensual' canasta_basica.id %}">{{ canasta_basica.anio }}</a>
+                </td>
+                <td>{{ canasta_basica.precio_promedio }}</td>
+                <td>{{ canasta_basica.inflacion }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 
 {% endblock %}

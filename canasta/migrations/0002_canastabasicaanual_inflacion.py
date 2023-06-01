@@ -13,7 +13,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='canastabasicaanual',
             name='inflacion',
-            field=models.DecimalField(decimal_places=2, default=0, max_digits=3),
+            field=models.DecimalField(
+                decimal_places=2, default=0, max_digits=3),
             preserve_default=False,
         ),
     ]
