@@ -8,7 +8,11 @@ def create_initial_data(sender, **kwargs):
     if sender.name == 'canasta':
         anios = [2019, 2020, 2021, 2022, 2023]
         for anio in anios:
-            cba = CanastaBasicaAnual.objects.create(
-                anio=anio, precio_promedio=0, inflacion=0)
-            for _ in range(12):
-                CanastaBasicaMensual.objects.create(precio=0, anual=cba)
+            if not CanastaBasicaAnual.objects.filter(anio=anio).exists():
+                cba = CanastaBasicaAnual.objects.create(
+                    anio=anio, precio_promedio=0, inflacion=0)
+                for _ in range(12):
+                    if not CanastaBasicaMensual.objects.filter(
+                            anual_id=cba.id).exists():
+                        CanastaBasicaMensual.objects.create(precio=0,
+                                                            anual=cba)

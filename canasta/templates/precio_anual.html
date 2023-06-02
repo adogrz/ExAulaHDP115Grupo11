@@ -14,8 +14,8 @@
                 <td>
                     <a href="{% url 'mensual' canasta_basica.id %}">{{ canasta_basica.anio }}</a>
                 </td>
-                <td>{{ canasta_basica.precio_promedio }}</td>
-                <td>{{ canasta_basica.inflacion }}</td>
+                <td>${{ canasta_basica.precio_promedio }}</td>
+                <td>{{ canasta_basica.inflacion }}%</td>
             </tr>
         {% endfor %}
     </table>

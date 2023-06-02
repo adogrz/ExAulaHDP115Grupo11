@@ -5,7 +5,11 @@
 
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.errors.precio }}
+        <br>
+        <label for="precio">Precio:</label>
+        <input type="text" name="precio" id="precio">
+
         <button>
             Guardar
         </button>
