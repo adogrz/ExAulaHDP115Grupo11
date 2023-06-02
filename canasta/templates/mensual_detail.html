@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Mensual detail</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.errors.precio }}
+        <br>
+        <label for="precio">Precio:</label>
+        <input type="text" name="precio" id="precio">
+
+        <button>
+            Guardar
+        </button>
+    </form>
+
+{% endblock %}

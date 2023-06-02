@@ -18,10 +18,16 @@
         <tr class="table-group-divider" scope="col">
             <td>{{ canasta_basica_anual.anio }}</td>
             {% for canasta_basica_mensual in canastas_basicas_mensuales %}
-                <td>{{ canasta_basica_mensual.precio }}</td>
+                <td>
+                    {% if user.is_authenticated and user.is_superuser %}
+                        <a href="{% url 'mensual_detail' canasta_basica_anual.id canasta_basica_mensual.id %}">${{ canasta_basica_mensual.precio }}</a>
+                    {% else %}
+                        ${{ canasta_basica_mensual.precio }}
+                    {% endif %}
+                </td>
             {% endfor %}
-            <td>{{ canasta_basica_anual.precio_promedio }}</td>
-            <td>{{ canasta_basica_anual.inflacion }}</td>
+            <td>${{ canasta_basica_anual.precio_promedio }}</td>
+            <td>{{ canasta_basica_anual.inflacion }}%</td>
         </tr>
         </tbody>
     </table>

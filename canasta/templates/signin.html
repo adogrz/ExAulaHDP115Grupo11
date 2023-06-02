@@ -1,19 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    
-    {{ error }}
-    <div class= "my-form">
-        <form class="form" action="/signin/" method="POST">
-            <fieldset class="border rounded-3 p-3">
-                <h1 class="h1-signout">Sign in</h1>
+    <main>
+        <div>
+            <section>
+                <form action="/signin/" method="POST">
+                    <h1>Signin</h1>
+                    {{ error }}
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="button-signin">
-                        Sign in
-                    </button>
-            </fieldset>
-        </form>
-    </div>
 
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username"
+                               placeholder="Write your username">
+                    </div>
+
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password"
+                               placeholder="Write your password">
+                    </div>
+
+                    <button>
+                        Signin
+                    </button>
+                </form>
+            </section>
+        </div>
+    </main>
 {% endblock %}

@@ -1,19 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    
+    <main>
+        <div>
+            <section>
+                <form method="POST">
+                    <h1>Signup</h1>
+                    {{ error }}
+                    {% csrf_token %}
 
-    {{ error }}
-    <div class="container-form-singup">
-        <form class="form-singup" method="POST">
-            <fieldset class="border rounded-3 p-3">
-                <h1 class="h1-signout">Sign Up</h1>
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button class="button-signup">
-                   Sign up
-                </button>
-            </fieldset>
-        </form>
-    </div>
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username"
+                               placeholder="Write your username">
+                    </div>
+
+                    <div>
+                        <label for="password1">Password:</label>
+                        <input type="password" name="password1" id="password1"
+                               placeholder="Write your password">
+                    </div>
+
+                    <div>
+                        <label for="password2">Confirm Password:</label>
+                        <input type="password" name="password2" id="password2"
+                               placeholder="Confirm your password">
+                    </div>
+
+                    <button>
+                        Signup
+                    </button>
+                </form>
+            </section>
+        </div>
+
+    </main>
 {% endblock %}
