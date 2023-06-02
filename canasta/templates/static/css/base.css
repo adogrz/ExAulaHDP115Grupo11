@@ -1,0 +1,163 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container-fluid {
+  margin-top: 20px;
+}
+
+/* Estilos para referenciar paginas */
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin-top: 20px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+aside.content-wrapper {
+  text-align: center;
+}
+
+/* Estilos del items del navbar */
+div.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+
+a.nav-link-nv {
+  font-size: 20px;
+  color: #f7f7f7;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.logo {
+  width: 100px;
+  height: 75px;
+  margin-left: 300px;
+  margin-right: 500px;
+}
+
+/* Estilos del menú lateral */
+.my-custom-button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #f7f7f7;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-right: 320px;
+}
+
+.my-custom-button:hover {
+  background-color: #2e2e2e;
+}
+
+i.bi.bi-list {
+  font-size: 30px;
+  margin-right: 2px;
+}
+
+.offcanvas-title {
+  color: #f7f7f7;
+}
+
+.offcanvas.offcanvas-start {
+  background-color: #343a40;
+}
+
+a.nav-link {
+  color: #f7f7f7;
+}
+
+div.offcanvas.offcanvas-start {
+  width: 300px;
+}
+
+.offcanvas-body {
+  position: relative;
+}
+
+.offcanvas-body-down {
+  position: absolute;
+  top: 80%;
+}
+
+/* Estilos para el formulario de sign in */
+.button-signin {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-signin:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el formulario de sign up */
+.button-signup {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-signup:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para tabla precio anual */
+div.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a.disabled-link {
+  pointer-events: none;
+  color: gray;
+  text-decoration: none;
+  cursor: not-allowed;
+}
+
+/* Estilos para pagina inicio */
+
+
+/* Estilos para el carrusel */
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-item img.img-fluid {
+  max-height: 50vh;
+  object-fit: scale-down;
+}

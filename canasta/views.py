@@ -8,6 +8,9 @@ from .models import CanastaBasicaAnual, CanastaBasicaMensual
 
 # Create your views here.
 
+def home(request):
+    return render(request, 'home.html')
+
 
 def obtener_lista_canasta_basica(request):
     canastas_basicas_anuales = CanastaBasicaAnual.objects.all()
@@ -87,3 +90,4 @@ def signin(request):
         else:
             login(request, user)
             return redirect('precio_anual')
+        

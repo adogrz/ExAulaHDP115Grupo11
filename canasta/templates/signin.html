@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-    <h1>Signin</h1>
-
+    
     {{ error }}
-
-    <form action="/signin/" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>
-            Signin
-        </button>
-    </form>
+    <div class= "my-form">
+        <form class="form" action="/signin/" method="POST">
+            <fieldset class="border rounded-3 p-3">
+                <h1 class="h1-signout">Sign in</h1>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="button-signin">
+                        Sign in
+                    </button>
+            </fieldset>
+        </form>
+    </div>
 
 {% endblock %}
