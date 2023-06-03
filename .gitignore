@@ -1,6 +1,12 @@
+# virtualenv
 venv/
+
+# Editores e IDEs
 .idea/
 .vscode/
-db.sqlite3
+
+# Django
+*.pyc
+*.sqlite3
 __pycache__/
 InflacionCanastaBasica/__pycache__/

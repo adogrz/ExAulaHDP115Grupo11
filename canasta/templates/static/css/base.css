@@ -1,0 +1,112 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  position: sticky;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  position: sticky;
+}
+
+aside.content-wrapper {
+  text-align: center;
+}
+
+/* Estilos del items del navbar */
+.navbar {
+  position: sticky;
+}
+
+div.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1vw;
+}
+
+div.nav-left-pair {
+  justify-content: space-between;
+  margin-left: 20vw;
+}
+
+a.nav-link-nv {
+  font-size: 2vh;
+  color: #f7f7f7;
+  text-decoration: none;
+  border-radius: 2px;
+  margin-left: 2vw;
+  cursor: pointer;
+}
+
+a.nav-link-nv:hover {
+  background-color: #2e2e2e;
+}
+
+.logo {
+  width: 13.33vw;
+  height: 10vh;
+  margin-left: 33vw;
+  margin-right: 5vw;
+}
+
+/* Estilos del menú lateral */
+.my-custom-button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #f7f7f7;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-right: 5vw;
+}
+
+.my-custom-button:hover {
+  background-color: #2e2e2e;
+}
+
+i.bi.bi-list {
+  font-size: 30px;
+  margin-right: 2px;
+}
+
+.offcanvas-title {
+  color: #f7f7f7;
+}
+
+.offcanvas.offcanvas-start {
+  background-color: #343a40;
+}
+
+a.nav-link {
+  color: #f7f7f7;
+}
+
+div.offcanvas.offcanvas-start {
+  width: 300px;
+}
+
+.offcanvas-body {
+  position: relative;
+}
+
+.offcanvas-body-down {
+  position: absolute;
+  top: 80%;
+}
+
+
+
+
+
+
+

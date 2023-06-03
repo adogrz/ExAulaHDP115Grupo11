@@ -1,0 +1,18 @@
+/* Estilos para el formulario de sign up */
+.button-signup {
+  display: inline-block;
+  padding: 1.33vh 2.67vh;
+  font-size: 1.78vh;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-signup:hover {
+  background-color: #0056b3;
+}
