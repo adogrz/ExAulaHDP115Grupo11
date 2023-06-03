@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Mensual detail</h1>
-
+<div class="table-wrapper">
     <form method="POST">
+<<<<<<< HEAD
         {% csrf_token %}
         {{ form.errors.precio }}
         {{ error }}
@@ -13,6 +13,22 @@
         <button>
             Guardar
         </button>
+=======
+        <fieldset class="border rounded-3 p-3">
+            <h1>Detalle Mensual</h1>
+            {% csrf_token %}
+            {{ form.errors.precio }}
+            <br>
+            <div class="d-flex align-items-center">
+                <label for="precio" class="me-2">Precio:</label>
+                <input type="text" name="precio" id="precio" class="form-control">
+            </div>
+              
+            <button class="btn btn-success">
+                Guardar
+            </button>
+        </fieldset>
+>>>>>>> 83ca925c0735e8191fb3aa308bd732737f16a073
     </form>
-
+ <div class="table-wrapper">
 {% endblock %}

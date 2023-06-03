@@ -1,80 +1,85 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    <h1>Precio e Inflación de la Canasta Básica en El Salvador</h1>
+    <div class="table-wrapper">
+        <h1>Precio e Inflación de la Canasta Básica en El Salvador</h1>
 
-    <div style="width: 60%">
-        <canvas id="precio_vs_inflacion"></canvas>
-    </div>
+        <div style="width: 60%">
+            <canvas id="precio_vs_inflacion"></canvas>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script>
-        const ctx = document.getElementById('precio_vs_inflacion').getContext("2d");
+        <script>
+            const ctx = document.getElementById('precio_vs_inflacion').getContext("2d");
 
-        let chartLabels = [];
-        let chartDataPrecio = [];
-        let chartDataInflacion = [];
+            let chartLabels = [];
+            let chartDataPrecio = [];
+            let chartDataInflacion = [];
 
-        {% for canasta_basica in canastas_basicas_anuales %}
-            chartLabels.push("{{ canasta_basica.anio }}");
-            chartDataPrecio.push("{{ canasta_basica.precio_promedio }}");
-            chartDataInflacion.push("{{ canasta_basica.inflacion }}");
-        {% endfor %}
+            {% for canasta_basica in canastas_basicas_anuales %}
+                chartLabels.push("{{ canasta_basica.anio }}");
+                chartDataPrecio.push("{{ canasta_basica.precio_promedio }}");
+                chartDataInflacion.push("{{ canasta_basica.inflacion }}");
+            {% endfor %}
 
-        new Chart(ctx, {
-            type: 'scatter',
-            data: {
-                labels: chartLabels,
-                datasets: [
-                    {
-                        type: 'bar',
-                        label: 'Precio promedio',
-                        data: chartDataPrecio,
-                        backgroundColor: 'rgba(255, 99, 132, 0.4)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        borderWidth: 1
-                    },
-                    {
-                        type: 'line',
-                        label: 'Inflación',
-                        data: chartDataInflacion,
-                        backgroundColor: 'rgba(54, 162, 235, 1)',
-                        borderColor: 'rgb(54, 162, 235)',
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            callback: function (value, index, values) {
-                                return value + '%';
-                            }
+            new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    labels: chartLabels,
+                    datasets: [
+                        {
+                            type: 'bar',
+                            label: 'Precio promedio',
+                            data: chartDataPrecio,
+                            backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            borderWidth: 1
+                        },
+                        {
+                            type: 'line',
+                            label: 'Inflación',
+                            data: chartDataInflacion,
+                            backgroundColor: 'rgba(54, 162, 235, 1)',
+                            borderColor: 'rgb(54, 162, 235)',
+                            borderWidth: 1
                         }
-                    }]
+                    ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                callback: function (value, index, values) {
+                                    return value + '%';
+                                }
+                            }
+                        }]
+                    }
                 }
-            }
-        });
-    </script>
+            });
+        </script>
 
-    <table>
-        <tr>
-            <th>Año</th>
-            <th>Precio promedio</th>
-            <th>Inflación</th>
-        </tr>
-        {% for canasta_basica in canastas_basicas_anuales %}
-            <tr>
-                <td>
-                    <a href="{% url 'mensual' canasta_basica.id %}">{{ canasta_basica.anio }}</a>
-                </td>
-                <td>${{ canasta_basica.precio_promedio }}</td>
-                <td>{{ canasta_basica.inflacion }}%</td>
-            </tr>
-        {% endfor %}
-    </table>
-
+        <div class="table-container">
+            <table class="table">
+                <tr>
+                    <th scope="col">Año</th>
+                    <th scope="col">Precio promedio</th>
+                    <th scope="col">Inflación</th>
+                </tr>
+                {% for canasta_basica in canastas_basicas_anuales %}
+                    <tr class="table-group-divider">
+                        <td scope="row">
+                            <a class="disabled-link"
+                               href="{% url 'mensual' canasta_basica.id %}">{{ canasta_basica.anio }}</a>
+                        </td>
+                        <td scope="row">{{ canasta_basica.precio_promedio }}</td>
+                        <td scope="row">{{ canasta_basica.inflacion }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 {% endblock %}

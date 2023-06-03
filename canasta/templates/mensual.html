@@ -1,79 +1,83 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-    <h1>Precios Mensuales de la Canasta Básica
-        en {{ canasta_basica_anual.anio }}</h1>
+    <div class="table-wrapper">
+        <h1>Precios Mensuales de la Canasta Básica
+            en {{ canasta_basica_anual.anio }}</h1>
 
-    <div style="width: 60%">
-        <canvas id="precios_mensuales"></canvas>
-    </div>
+        <div style="width: 60%">
+            <canvas id="precios_mensuales"></canvas>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script>
-        const ctx = document.getElementById('precios_mensuales').getContext("2d");
+        <script>
+            const ctx = document.getElementById('precios_mensuales').getContext("2d");
 
-        let chartLabels = [];
-        let chartDataPrecio = [];
+            let chartLabels = [];
+            let chartDataPrecio = [];
 
-        {% for mes in meses %}
-            chartLabels.push("{{ mes }}");
-        {% endfor %}
+            {% for mes in meses %}
+                chartLabels.push("{{ mes }}");
+            {% endfor %}
 
-        {% for canasta_basica_mensual in canastas_basicas_mensuales %}
-            chartDataPrecio.push({{ canasta_basica_mensual.precio }});
-        {% endfor %}
+            {% for canasta_basica_mensual in canastas_basicas_mensuales %}
+                chartDataPrecio.push({{ canasta_basica_mensual.precio }});
+            {% endfor %}
 
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: chartLabels,
-                datasets: [{
-                    label: 'Precio',
-                    data: chartDataPrecio,
-                    backgroundColor: 'rgba(75, 192, 192, 0.8)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartLabels,
+                    datasets: [{
+                        label: 'Precio',
+                        data: chartDataPrecio,
+                        backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
-        });
+            });
 
-    </script>
+        </script>
 
-    <table>
-        <thead>
-        <tr>
-            <th>Año</th>
-            {% for mes in meses %}
-                <th>{{ mes }}</th>
-            {% endfor %}
-            <th>Promedio anual</th>
-            <th>Inflación</th>
-        </tr>
-        </thead>
+        <table class="table">
+            <thead>
+            <tr class="table-group-divider" scope="col">
+                <th scope="row">Año</th>
+                {% for mes in meses %}
+                    <th>{{ mes }}</th>
+                {% endfor %}
+                <th scope="row">Promedio anual</th>
+                <th scope="row">Inflación</th>
+            </tr>
+            </thead>
 
-        <tbody>
-        <tr>
-            <td>{{ canasta_basica_anual.anio }}</td>
-            {% for canasta_basica_mensual in canastas_basicas_mensuales %}
-                <td>
-                    {% if user.is_authenticated and user.is_superuser %}
-                        <a href="{% url 'mensual_detail' canasta_basica_anual.id canasta_basica_mensual.id %}">${{ canasta_basica_mensual.precio }}</a>
-                    {% else %}
-                        ${{ canasta_basica_mensual.precio }}
-                    {% endif %}
-                </td>
-            {% endfor %}
-            <td>${{ canasta_basica_anual.precio_promedio }}</td>
-            <td>{{ canasta_basica_anual.inflacion }}%</td>
-        </tr>
-        </tbody>
-    </table>
+            <tbody class="table-group-divider">
+            <tr class="table-group-divider" scope="col">
+                <td>{{ canasta_basica_anual.anio }}</td>
+                {% for canasta_basica_mensual in canastas_basicas_mensuales %}
+                    <td>
+                        {% if user.is_authenticated and user.is_superuser %}
+                            <a class="link-menu"
+                               href="{% url 'mensual_detail' canasta_basica_anual.id canasta_basica_mensual.id %}"
+                               title="Puedes editar datos">${{ canasta_basica_mensual.precio }}</a>
+                        {% else %}
+                            ${{ canasta_basica_mensual.precio }}
+                        {% endif %}
+                    </td>
+                {% endfor %}
+                <td>${{ canasta_basica_anual.precio_promedio }}</td>
+                <td>{{ canasta_basica_anual.inflacion }}%</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

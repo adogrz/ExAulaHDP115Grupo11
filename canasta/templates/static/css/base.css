@@ -1,0 +1,286 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  position: sticky;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  position: sticky;
+}
+
+aside.content-wrapper {
+  text-align: center;
+}
+
+/* Estilos del items del navbar */
+.navbar {
+  margin-bottom: 2vh;
+  position: sticky;
+}
+
+div.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1vw;
+}
+
+div.nav-left-pair {
+  justify-content: space-between;
+  margin-left: 20vw;
+}
+
+a.nav-link-nv {
+  font-size: 2vh;
+  color: #f7f7f7;
+  text-decoration: none;
+  border-radius: 2px;
+  margin-left: 2vw;
+  cursor: pointer;
+}
+
+a.nav-link-nv:hover {
+  background-color: #2e2e2e;
+}
+
+.logo {
+  width: 13.33vw;
+  height: 10vh;
+  margin-left: 33vw;
+  margin-right: 5vw;
+}
+
+/* Estilos del menú lateral */
+.my-custom-button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #f7f7f7;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-right: 5vw;
+}
+
+.my-custom-button:hover {
+  background-color: #2e2e2e;
+}
+
+i.bi.bi-list {
+  font-size: 30px;
+  margin-right: 2px;
+}
+
+.offcanvas-title {
+  color: #f7f7f7;
+}
+
+.offcanvas.offcanvas-start {
+  background-color: #343a40;
+}
+
+a.nav-link {
+  color: #f7f7f7;
+}
+
+div.offcanvas.offcanvas-start {
+  width: 300px;
+}
+
+.offcanvas-body {
+  position: relative;
+}
+
+.offcanvas-body-down {
+  position: absolute;
+  top: 80%;
+}
+
+/* Estilos para el formulario de sign in */
+input.form-control {
+  margin-top: 1.33vh;
+  margin-bottom: 1.33vh;
+}
+
+.button-signin {
+  display: inline-block;
+  padding: 1.33vh 2.67vh;
+  font-size: 1.78vh;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-signin:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el formulario de sign up */
+.button-signup {
+  display: inline-block;
+  padding: 1.33vh 2.67vh;
+  font-size: 1.78vh;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-signup:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para tabla precio anual */
+div.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -17.78vh;
+}
+
+div.table-wrapper h1 {
+  text-align: center;
+  margin-bottom: 2vh;
+}
+
+a.disabled-link {
+  pointer-events: none;
+  color: gray;
+  text-decoration: none;
+  cursor: not-allowed;
+}
+
+/* Estilos para el carrusel y página de inicio */
+.custom-background {
+  background-color: #1b1919;
+}
+.carousel-item img.img-fluid {
+  max-height: 150%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #282626;
+}
+
+.container-inf {
+  margin-top: 5vh;
+}
+
+h1.mt-4 {
+  color: #fff;
+}
+
+/* Estilos para tabla mensual */
+.link-menu {
+  text-decoration: none;
+  color: #212529;
+}
+
+.link-menu:hover {
+  cursor: pointer;
+  color: #53a47a;
+}
+/* Estilos para zoom aumentado */
+@media screen and (max-width: 1025px) {
+  .zoomed-in .carousel-item {
+    height: calc(50vh - 6.67vw);
+    margin-top: 0.67vw;
+  }
+  
+  .zoomed-in div.carousel.slide {
+    margin-top: 60vh;
+  }
+  
+  .zoomed-in h1.mt-4 {
+    font-size: 2.5rem;
+  }
+}
+
+
+/* Estilos para zoom disminuido */
+@media screen and (min-width: 1600px) {
+  .zoomed-out .carousel-item {
+    height: calc(30vh - 4vw);
+    margin-top: 0.4vw;
+  }
+  
+  .zoomed-out div.carousel.slide {
+    margin-top: 40vh;
+  }
+  
+  .zoomed-out h1.mt-4 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Media Queries para diferentes tamaños de pantalla */
+
+/* Estilos para pantalla pequeña */
+@media only screen and (max-width: 600px) {
+  .carousel-item {
+    height: calc(30vh - 3.33vw);
+    margin-top: 0.33vw;
+  }
+  
+  div.carousel.slide {
+    margin-top: 130vh;
+  }
+  
+  h1.mt-4 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Estilos para pantalla mediana */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .carousel-item {
+    height: calc(40vh - 4.44vw);
+    margin-top: 0.44vw;
+  }
+  
+  div.carousel.slide {
+    margin-top: 100vh;
+  }
+  
+  h1.mt-4 {
+    font-size: 2rem;
+  }
+}
+
+/* Estilos para pantalla grande */
+@media only screen and (min-width: 1025px) {
+  .carousel-item {
+    height: calc(50vh - 6.67vw);
+    margin-top: 0.67vw;
+  }
+  
+  div.carousel.slide {
+    margin-top: 90vh;
+  }
+  
+  h1.mt-4 {
+    font-size: 2.5rem;
+  }
+}
+
+
+
