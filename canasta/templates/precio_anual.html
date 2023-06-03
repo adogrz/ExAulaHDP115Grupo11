@@ -3,6 +3,63 @@
 {% block content %}
     <h1>Precio Anual</h1>
 
+    <div style="width: 60%">
+        <canvas id="precio_vs_inflacion"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('precio_vs_inflacion').getContext("2d");
+
+        let chartLabels = [];
+        let chartDataPrecio = [];
+        let chartDataInflacion = [];
+
+        {% for canasta_basica in canastas_basicas_anuales %}
+            chartLabels.push("{{ canasta_basica.anio }}");
+            chartDataPrecio.push("{{ canasta_basica.precio_promedio }}");
+            chartDataInflacion.push("{{ canasta_basica.inflacion }}");
+        {% endfor %}
+
+        new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                labels: chartLabels,
+                datasets: [
+                    {
+                        type: 'bar',
+                        label: 'Precio promedio anual',
+                        data: chartDataPrecio,
+                        backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        borderWidth: 1
+                    },
+                    {
+                        type: 'line',
+                        label: 'Inflación',
+                        data: chartDataInflacion,
+                        backgroundColor: 'rgba(54, 162, 235, 1)',
+                        borderColor: 'rgb(54, 162, 235)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            callback: function (value, index, values) {
+                                return value + '%';
+                            }
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
     <table>
         <tr>
             <th>Año</th>

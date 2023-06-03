@@ -2,6 +2,50 @@
 
 {% block content %}
     <h1>Canasta Básica Mensual</h1>
+
+    <div style="width: 60%">
+        <canvas id="precios_mensuales"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('precios_mensuales').getContext("2d");
+
+        let chartLabels = [];
+        let chartDataPrecio = [];
+
+        {% for mes in meses %}
+            chartLabels.push("{{ mes }}");
+        {% endfor %}
+
+        {% for canasta_basica_mensual in canastas_basicas_mensuales %}
+            chartDataPrecio.push({{ canasta_basica_mensual.precio }});
+        {% endfor %}
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: 'Precio',
+                    data: chartDataPrecio,
+                    backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+    </script>
+
     <table>
         <thead>
         <tr>
