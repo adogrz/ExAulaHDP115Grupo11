@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<div class="table-wrapper">
     <h1>Canasta Básica Mensual</h1>
     <table class="table">
         <thead>
@@ -20,7 +21,7 @@
             {% for canasta_basica_mensual in canastas_basicas_mensuales %}
                 <td>
                     {% if user.is_authenticated and user.is_superuser %}
-                        <a href="{% url 'mensual_detail' canasta_basica_anual.id canasta_basica_mensual.id %}">${{ canasta_basica_mensual.precio }}</a>
+                        <a class="link-menu" href="{% url 'mensual_detail' canasta_basica_anual.id canasta_basica_mensual.id %}" title="Puedes editar datos">${{ canasta_basica_mensual.precio }}</a>
                     {% else %}
                         ${{ canasta_basica_mensual.precio }}
                     {% endif %}
@@ -31,4 +32,5 @@
         </tr>
         </tbody>
     </table>
+</div>
 {% endblock %}

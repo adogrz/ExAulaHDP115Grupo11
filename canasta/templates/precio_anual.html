@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
-    <h1>Precio Anual</h1>
-    <div class="table-container">
-        <table class="table">
-            <tr>
-                <th  scope="col">Año</th>
-                <th scope="col">Precio promedio</th>
-                <th scope="col">Inflación</th>
-            </tr>
-            {% for canasta_basica in canastas_basicas_anuales %}
-                <tr class="table-group-divider">
-                    <td scope="row">
-                        <a class="disabled-link" href="{% url 'mensual' canasta_basica.id %}">{{ canasta_basica.anio }}</a>
-                    </td>
-                    <td scope="row" >{{ canasta_basica.precio_promedio }}</td>
-                    <td scope="row">{{ canasta_basica.inflacion }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
 
+{% block content %}
+  <div class="table-wrapper">
+      <h1>Precio Anual</h1>
+      <div class="table-container">
+        <table class="table">
+          <tr>
+            <th scope="col">Año</th>
+            <th scope="col">Precio promedio</th>
+            <th scope="col">Inflación</th>
+          </tr>
+          {% for canasta_basica in canastas_basicas_anuales %}
+          <tr class="table-group-divider">
+            <td scope="row">
+              <a class="disabled-link" href="{% url 'mensual' canasta_basica.id %}">{{ canasta_basica.anio }}</a>
+            </td>
+            <td scope="row">{{ canasta_basica.precio_promedio }}</td>
+            <td scope="row">{{ canasta_basica.inflacion }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+  </div>
 {% endblock %}

@@ -2,33 +2,62 @@
 {% load static %}
 
 {% block content %}
+<div class="custom-background">
+  <section class="section-img-card">
     <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="img-fluid" src="{% static 'img/img-c1.jpg' %}" alt="img1">
+          <div class="carousel-caption d-none d-md-block"></div>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="img-fluid" src="{% static 'img/img-c1.jpg' %}" alt="...">
-            <div class="carousel-caption d-none d-md-block"></div>
-          </div>
-          <div class="carousel-item">
-            <img class="img-fluid" src="{% static 'img/img-c2.jpg' %}" alt="...">
-            <div class="carousel-caption d-none d-md-block"></div>
-          </div>
-          <div class="carousel-item">
-            <img class="img-fluid" src="{% static 'img/img-c3.jpg' %}" alt="...">
-            <div class="carousel-caption d-none d-md-block"></div>
-          </div>
+        <div class="carousel-item">
+          <img class="img-fluid" src="{% static 'img/img-c2.jpg' %}" alt="img2">
+          <div class="carousel-caption d-none d-md-block"></div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+        <div class="carousel-item">
+          <img class="img-fluid" src="{% static 'img/img-c3.jpg' %}" alt="img3">
+          <div class="carousel-caption d-none d-md-block"></div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+
+    <div class="container-inf">
+      <h1 class="mt-4">Información sobre la canasta básica y la inflación en El Salvador</h1>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h2 class="card-title">Canasta básica en El Salvador</h2>
+          <p class="card-text">El Gobierno de El Salvador realiza estudios periódicos para determinar el costo de la canasta básica y monitorea los precios de los productos que la componen. El objetivo es garantizar que los ciudadanos tengan acceso a los bienes y servicios esenciales para vivir dignamente.</p>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h2 class="card-title">Inflación y su impacto</h2>
+          <p class="card-text">En cuanto a la inflación, es un indicador económico que mide el aumento generalizado y sostenido de los precios de bienes y servicios en un país durante un período de tiempo determinado. La inflación puede afectar el poder adquisitivo de las personas, ya que si los precios aumentan más rápido que los ingresos, el dinero alcanza para comprar menos.</p>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h2 class="card-title">Promedio anual y su importancia</h2>
+          <p class="card-text">El promedio anual se refiere al cálculo del valor promedio de un determinado indicador económico a lo largo de un año. En el caso de la canasta básica, se puede calcular el promedio anual de los precios de los productos que la componen. Este promedio puede utilizarse para evaluar el costo de vida y comparar los precios de un año a otro, lo que permite analizar el impacto de la inflación en la canasta básica y en el poder adquisitivo de la población.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 {% endblock %}
