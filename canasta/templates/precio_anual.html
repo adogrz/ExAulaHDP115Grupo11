@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block content %}
-    <div class="table-wrapper">
+    <main class="main-container">
         <h1>Precio e Inflación de la Canasta Básica en El Salvador</h1>
 
-        <div style="width: 60%">
+        <div style="width: 50%">
             <canvas id="precio_vs_inflacion"></canvas>
         </div>
 
@@ -75,11 +75,12 @@
                             <a class="disabled-link"
                                href="{% url 'mensual' canasta_basica.id %}">{{ canasta_basica.anio }}</a>
                         </td>
-                        <td scope="row">{{ canasta_basica.precio_promedio }}</td>
-                        <td scope="row">{{ canasta_basica.inflacion }}</td>
+                        <td scope="row">
+                            ${{ canasta_basica.precio_promedio }}</td>
+                        <td scope="row">{{ canasta_basica.inflacion }}%</td>
                     </tr>
                 {% endfor %}
             </table>
         </div>
-    </div>
+    </main>
 {% endblock %}

@@ -9,11 +9,7 @@ from .models import CanastaBasicaAnual, CanastaBasicaMensual
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
-
-def home(request):
-    return render(request, 'home.html')
-
+# Create your views here.s
 
 def obtener_lista_canasta_basica(request):
     canastas_basicas_anuales = CanastaBasicaAnual.objects.all()
@@ -82,8 +78,8 @@ def mensual_detail(request, canasta_basica_anual_id, mes_id):
                 precio_anterior = canastas_basicas_anuales[
                     i - 1].precio_promedio
                 if precio_anterior != 0:
-                    inflacion = ((
-                                         precio_actual - precio_anterior) / precio_anterior) * 100
+                    inflacion = ((precio_actual - precio_anterior)
+                                 / precio_anterior) * 100
                     canasta_basica_anual.inflacion = inflacion
                 canasta_basica_anual.save()
 
@@ -108,26 +104,25 @@ def signup(request):
     template_name = 'signup.html'
 
     if request.method == 'GET':
-        form = UserCreationForm()
-        return render(request, template_name, {'form': form})
-    elif request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
+        return render(request, template_name, {'form': UserCreationForm})
+    else:
+        if request.POST["password1"] == request.POST["password2"]:
             try:
-                user = User.objects.create_user(username=username,
-                                                password=password)
+                user = User.objects.create_user(request.POST["username"],
+                                                password=request.POST[
+                                                    "password1"])
+                user.save()
                 login(request, user)
                 return redirect('precio_anual')
             except IntegrityError:
-                return render(request, template_name, {
-                    'form': form,
-                    'error': 'Username already exists'
-                })
-        else:
-            return render(request, template_name, {'form': form,
-                                                   'error': 'Username or password did not match'})
+                return render(request, template_name,
+                              {"form": UserCreationForm,
+                               "error": "Username already exists."})
+
+        return render(request, template_name, {
+            "form": UserCreationForm,
+            "error": "Passwords did not match."
+        })
 
 
 @login_required

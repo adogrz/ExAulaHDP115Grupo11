@@ -1,33 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="table-wrapper">
-    <main class="form-container">
-        <div class="container-form">
-            <section>
-                <form  class="form "action="/signin/" method="POST">
-                    <fieldset class="border rounded-3 p-3">
-                        <h1 class="h3 mb-3 font-weight-normal">Signin</h1>
-                        {{ error }}
-                        {% csrf_token %}
+    <div class="table-wrapper">
+        <main class="form-container">
+            <div class="container-form">
+                <section>
+                    <form class="form " action="/signin/" method="POST">
+                        <fieldset class="border rounded-3 p-3">
+                            <h1 class="h3 mb-3 font-weight-normal">Signin</h1>
+                            {{ error }}
+                            {% csrf_token %}
 
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" id="username" placeholder="Write your username">
-                        </div>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control"
+                                       name="username" id="username"
+                                       placeholder="Write your username">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Write your password">
-                        </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control"
+                                       name="password" id="password"
+                                       placeholder="Write your password">
+                            </div>
 
-                        <button class="button-signin" type="submit">
-                            Signin
-                        </button>
-                    </fieldset>
-                </form>
-            </section>
-        </div>
-    </main>
-</div>
+                            <button class="button-signin" type="submit">
+                                Signin
+                            </button>
+                        </fieldset>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
 {% endblock %}

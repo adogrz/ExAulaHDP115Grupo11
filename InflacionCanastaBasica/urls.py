@@ -20,8 +20,7 @@ from canasta import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.home, name="home"),
-    path("precio_anual/", views.obtener_lista_canasta_basica, name="precio_anual"),
+    path("", views.obtener_lista_canasta_basica, name="precio_anual"),
     path("mensual/<int:canasta_basica_anual_id>/",
          views.obtener_canasta_basica, name="mensual"),
     path("mensual/<int:canasta_basica_anual_id>/<int:mes_id>/",

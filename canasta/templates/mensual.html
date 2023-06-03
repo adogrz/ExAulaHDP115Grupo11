@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="table-wrapper">
+    <main>
         <h1>Precios Mensuales de la Canasta Básica
             en {{ canasta_basica_anual.anio }}</h1>
 
-        <div style="width: 60%">
+        <div style="width: 50%">
             <canvas id="precios_mensuales"></canvas>
         </div>
 
@@ -48,7 +48,7 @@
 
         </script>
 
-        <table class="table">
+        <table class="table table-sm">
             <thead>
             <tr class="table-group-divider" scope="col">
                 <th scope="row">Año</th>
@@ -61,7 +61,7 @@
             </thead>
 
             <tbody class="table-group-divider">
-            <tr class="table-group-divider" scope="col">
+            <tr class="table-group-divider" scope="row">
                 <td>{{ canasta_basica_anual.anio }}</td>
                 {% for canasta_basica_mensual in canastas_basicas_mensuales %}
                     <td>
@@ -79,5 +79,5 @@
             </tr>
             </tbody>
         </table>
-    </div>
+    </main>
 {% endblock %}
