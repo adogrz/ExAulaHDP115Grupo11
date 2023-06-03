@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Precio Anual</h1>
+    <h1>Precio e Inflación de la Canasta Básica en El Salvador</h1>
 
     <div style="width: 60%">
         <canvas id="precio_vs_inflacion"></canvas>
@@ -29,7 +29,7 @@
                 datasets: [
                     {
                         type: 'bar',
-                        label: 'Precio promedio anual',
+                        label: 'Precio promedio',
                         data: chartDataPrecio,
                         backgroundColor: 'rgba(255, 99, 132, 0.4)',
                         borderColor: 'rgb(255, 99, 132)',

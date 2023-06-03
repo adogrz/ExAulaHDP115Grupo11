@@ -6,10 +6,10 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.errors.precio }}
+        {{ error }}
         <br>
         <label for="precio">Precio:</label>
-        <input type="text" name="precio" id="precio">
-
+        {{ form.precio }}
         <button>
             Guardar
         </button>

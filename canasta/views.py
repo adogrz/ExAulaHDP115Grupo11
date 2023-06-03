@@ -55,8 +55,9 @@ def mensual_detail(request, canasta_basica_anual_id, mes_id):
         form = CanastaBasicaMensualForm(request.POST,
                                         instance=canasta_basica_mensual)
 
-        if form.is_valid():
-            form.save()
+        try:
+            if form.is_valid():
+                form.save()
 
             canastas_basicas_mensuales = CanastaBasicaMensual.objects.filter(
                 anual_id=canasta_basica_anual_id)
@@ -65,9 +66,9 @@ def mensual_detail(request, canasta_basica_anual_id, mes_id):
                 return get_object_or_404(CanastaBasicaMensual,
                                          anual_id=canasta_basica_anual_id)
 
-            precio_promedio = \
-                canastas_basicas_mensuales.aggregate(Avg('precio'))[
-                    'precio__avg']
+            precios_mayor_cero = canastas_basicas_mensuales.exclude(precio=0)
+            precio_promedio = precios_mayor_cero.aggregate(Avg('precio'))[
+                'precio__avg']
             CanastaBasicaAnual.objects.filter(
                 pk=canasta_basica_anual_id).update(
                 precio_promedio=precio_promedio)
@@ -86,6 +87,12 @@ def mensual_detail(request, canasta_basica_anual_id, mes_id):
 
             return redirect('mensual',
                             canasta_basica_anual_id=canasta_basica_anual_id)
+        except KeyError:
+            return render(request, 'mensual_detail.html', {
+                'canasta_basica_mensual': canasta_basica_mensual,
+                'form': form,
+                'error': 'Invalid data'
+            })
     else:
         form = CanastaBasicaMensualForm(instance=canasta_basica_mensual)
 
