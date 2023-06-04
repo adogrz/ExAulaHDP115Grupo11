@@ -8,7 +8,10 @@
                     <form action="/signup/" method="POST">
                         <fieldset class="border rounded-3 p-3">
                             <h1>Signup</h1>
-                            {{ error }}
+                            <div style="color: red">
+                                {{ error }}
+                            </div>
+                            <br>
                             {% csrf_token %}
 
                             <div>

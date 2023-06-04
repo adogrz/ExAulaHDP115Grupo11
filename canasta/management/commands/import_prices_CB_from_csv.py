@@ -19,7 +19,7 @@ class Command(BaseCommand):
                 if not CanastaBasicaAnual.objects.filter(anio=row[0]).exists():
                     anual_instance = CanastaBasicaAnual(anio=row[0],
                                                         precio_promedio=row[1],
-                                                        inflacion=0)
+                                                        inflacion=row[2])
                     anual_instance.save()
                 else:
                     self.stderr.write(self.style.ERROR(
@@ -29,9 +29,8 @@ class Command(BaseCommand):
         mensual_file = options['mensual_file']
         with open(mensual_file) as f:
             reader = csv.reader(f)
-            next(reader)  # Omitir encabezado
+            next(reader)
             for row in reader:
-                # Obtener la instancia correspondiente de CanastaBasicaAnual según el año
                 try:
                     anual_instance = CanastaBasicaAnual.objects.get(
                         anio=row[1])

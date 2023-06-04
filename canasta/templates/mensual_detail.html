@@ -5,8 +5,10 @@
         <form class="border rounded-3 p-3 table-wrapper" method="POST">
             <h1>Editar precio</h1>
             {% csrf_token %}
-            {{ form.errors.precio }}
-            {{ error }}
+            <div style="color: red">
+                {{ form.errors.precio }}
+                {{ error }}
+            </div>
             <label for="precio" class="me-2">Precio:</label>
             <div>
                 {{ form.precio }}

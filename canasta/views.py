@@ -9,10 +9,12 @@ from .models import CanastaBasicaAnual, CanastaBasicaMensual
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.s
+# Create your views here
 
 def obtener_lista_canasta_basica(request):
-    canastas_basicas_anuales = CanastaBasicaAnual.objects.all()
+    # obtener todas las canastas basicas anuales de mayor a menor
+    canastas_basicas_anuales = CanastaBasicaAnual.objects.all().order_by(
+        'anio')
 
     return render(request, 'precio_anual.html', {
         'canastas_basicas_anuales': canastas_basicas_anuales
@@ -22,8 +24,9 @@ def obtener_lista_canasta_basica(request):
 def obtener_canasta_basica(request, canasta_basica_anual_id):
     canasta_basica_anual = get_object_or_404(CanastaBasicaAnual,
                                              pk=canasta_basica_anual_id)
+
     canastas_basicas_mensuales = CanastaBasicaMensual.objects.filter(
-        anual_id=canasta_basica_anual_id)
+        anual_id=canasta_basica_anual_id).order_by('id')
 
     if not canastas_basicas_mensuales:
         return get_object_or_404(CanastaBasicaMensual,
@@ -58,7 +61,7 @@ def mensual_detail(request, canasta_basica_anual_id, mes_id):
                 form.save()
 
             canastas_basicas_mensuales = CanastaBasicaMensual.objects.filter(
-                anual_id=canasta_basica_anual_id)
+                anual_id=canasta_basica_anual_id).order_by('id')
 
             if not canastas_basicas_mensuales:
                 return get_object_or_404(CanastaBasicaMensual,
@@ -71,7 +74,8 @@ def mensual_detail(request, canasta_basica_anual_id, mes_id):
                 pk=canasta_basica_anual_id).update(
                 precio_promedio=precio_promedio)
 
-            canastas_basicas_anuales = CanastaBasicaAnual.objects.all()
+            canastas_basicas_anuales = CanastaBasicaAnual.objects.all().order_by(
+                'anio')
             for i, canasta_basica_anual in enumerate(
                     canastas_basicas_anuales[1:], start=1):
                 precio_actual = canasta_basica_anual.precio_promedio
@@ -106,6 +110,15 @@ def signup(request):
     if request.method == 'GET':
         return render(request, template_name, {'form': UserCreationForm})
     else:
+        # Verificar que todas las entradas del formulario se hayan proporcionado
+        if not all([request.POST.get('username'),
+                    request.POST.get('password1'),
+                    request.POST.get('password2')]):
+            return render(request, template_name, {
+                "form": UserCreationForm,
+                "error": "All fields are required."
+            })
+
         if request.POST["password1"] == request.POST["password2"]:
             try:
                 user = User.objects.create_user(request.POST["username"],
@@ -118,11 +131,11 @@ def signup(request):
                 return render(request, template_name,
                               {"form": UserCreationForm,
                                "error": "Username already exists."})
-
-        return render(request, template_name, {
-            "form": UserCreationForm,
-            "error": "Passwords did not match."
-        })
+        else:
+            return render(request, template_name, {
+                "form": UserCreationForm,
+                "error": "Passwords did not match."
+            })
 
 
 @login_required
